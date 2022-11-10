@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1wi2uxslmiaw"]
+[gd_scene load_steps=10 format=3 uid="uid://ccq336ieg8gmq"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_nplxo"]
-[ext_resource type="PackedScene" uid="uid://cerxx8y5oun1h" path="res://Door/door.tscn" id="2_kw47k"]
+[ext_resource type="PackedScene" uid="uid://mrxgnt5o0gs6" path="res://Player/player.tscn" id="1_bx4og"]
+[ext_resource type="PackedScene" uid="uid://dw78ks6vukkh2" path="res://Door/door.tscn" id="2_kw47k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lm72g"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,10 +15,6 @@ background_mode = 2
 sky = SubResource("Sky_tuyi0")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cljll"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sda1m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v1kt5"]
 size = Vector3(30, 1, 30)
@@ -41,19 +37,7 @@ environment = SubResource("Environment_ypv1f")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.791835, 0.553785, 0)
-collision_layer = 2
-script = ExtResource("1_nplxo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_cljll")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_sda1m")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 9.96376, 13.1366)
+[node name="Player" parent="." instance=ExtResource("1_bx4og")]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

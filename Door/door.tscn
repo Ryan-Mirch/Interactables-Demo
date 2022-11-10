@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cerxx8y5oun1h"]
+[gd_scene load_steps=10 format=3 uid="uid://dw78ks6vukkh2"]
 
-[ext_resource type="Script" path="res://Door.gd" id="1_g6fvp"]
+[ext_resource type="Script" path="res://Door/Door.gd" id="1_g6fvp"]
 [ext_resource type="AudioStream" uid="uid://b655shlsux7yx" path="res://Door/Close Sound.wav" id="2_vovyy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ex5t1"]
