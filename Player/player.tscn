@@ -3,11 +3,15 @@
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_h5bng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cljll"]
+radius = 0.35
+height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sda1m"]
+radius = 0.35
+height = 1.8
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.791835, 0.553785, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 2
 script = ExtResource("1_h5bng")
 
@@ -18,4 +22,5 @@ shape = SubResource("CapsuleShape3D_cljll")
 mesh = SubResource("CapsuleMesh_sda1m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 9.96376, 13.1366)
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 6.006, 8, 6)
+fov = 35.0

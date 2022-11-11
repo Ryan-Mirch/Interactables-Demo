@@ -69,4 +69,5 @@ ui_interact={
 
 anti_aliasing/screen_space_roughness_limiter/amount=1.0
 anti_aliasing/quality/msaa_2d=1
-anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/screen_space_aa=1
