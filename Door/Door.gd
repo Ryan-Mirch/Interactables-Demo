@@ -10,7 +10,7 @@ func interacted() -> void:
 	else:
 		open_door()
 	
-	InteractableManager.update_prompt()
+	InteractableManager.update_highlighted_interactable()
 
 func is_interactable() -> bool:
 	return !animation_player.is_playing()
@@ -37,9 +37,9 @@ func close_door():
 	
 func door_opened():
 	is_open = true
-	InteractableManager.update_prompt()
+	InteractableManager.update_highlighted_interactable()
 
 
 func door_closed():
 	is_open = false
-	InteractableManager.update_prompt()
+	InteractableManager.update_highlighted_interactable()

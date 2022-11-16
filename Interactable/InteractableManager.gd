@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 			current_interactable.interacted()
 			
 	
-func update_prompt() -> void:
+func update_highlighted_interactable() -> void:
 	for i in get_tree().get_nodes_in_group("Interactable"):
 		i.highlight(false)
 		
@@ -43,11 +43,11 @@ func get_current_interactable():
 	
 func add_in_range_interactable(i:Interactable) -> void:
 	in_range_interactables.insert(0,i)
-	update_prompt()
+	update_highlighted_interactable()
 	
 
 func erase_in_range_interactable(i:Interactable) -> void:
 	in_range_interactables.erase(i)
-	update_prompt()
+	update_highlighted_interactable()
 	
 
