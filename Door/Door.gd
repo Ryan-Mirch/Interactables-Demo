@@ -1,14 +1,31 @@
 extends Interactable
 
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
+@onready var highlighter = $Highlight
 var is_open = false
 
-func interacted() -> void:
-	if animation_player.is_playing():return
+func interacted() -> void:	
 	if is_open:
 		close_door()
 	else:
 		open_door()
+	
+	InteractableManager.update_prompt()
+
+func is_interactable() -> bool:
+	return !animation_player.is_playing()
+
+
+func get_prompt_text() -> String:
+	if is_open:
+		return "Close Door"
+	else:
+		return "Open Door"
+		
+		
+func highlight(value:bool) -> void:
+	highlighter.visible = value
+
 	
 func open_door():
 	animation_player.play("Open")
@@ -20,9 +37,9 @@ func close_door():
 	
 func door_opened():
 	is_open = true
-	interaction_label.text = "(E) Close"
+	InteractableManager.update_prompt()
 
 
 func door_closed():
 	is_open = false
-	interaction_label.text = "(E) Open"
+	InteractableManager.update_prompt()
