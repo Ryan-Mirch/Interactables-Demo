@@ -29,6 +29,10 @@ config/icon="res://icon.svg"
 
 InteractableManager="*res://Interactable/InteractableManager.tscn"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=0
+
 [input]
 
 ui_left={

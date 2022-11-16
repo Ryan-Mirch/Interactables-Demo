@@ -13,15 +13,12 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[node name="InteractableManager" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_7ngqk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PromptContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="PromptContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -35,18 +32,21 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fgus8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PromptContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PromptContainer"]
+layout_mode = 2
 offset_right = 144.0
 offset_bottom = 43.0
 
-[node name="KeyLabel" type="Label" parent="CanvasLayer/PromptContainer/HBoxContainer"]
+[node name="KeyLabel" type="Label" parent="PromptContainer/HBoxContainer"]
+layout_mode = 2
 offset_right = 34.0
 offset_bottom = 43.0
 theme_override_font_sizes/font_size = 29
 text = "(E)"
 
-[node name="PromptLabel" type="Label" parent="CanvasLayer/PromptContainer/HBoxContainer"]
+[node name="PromptLabel" type="Label" parent="PromptContainer/HBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
 offset_left = 38.0
 offset_right = 144.0
 offset_bottom = 43.0
