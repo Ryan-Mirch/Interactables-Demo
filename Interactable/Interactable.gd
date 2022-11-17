@@ -1,18 +1,39 @@
 class_name Interactable extends Area3D
 
+#Used for calculating line of sight
+@export var center_position:Marker3D
+
+var player:CharacterBody3D = null
 
 func _ready() -> void:
 	connect("body_entered",_on_body_entered)
 	connect("body_exited",_on_body_exited)
 
 
-func _on_body_entered(_body: PhysicsBody3D) -> void:
+func _on_body_entered(body: CharacterBody3D) -> void:
 	InteractableManager.add_interactable_in_range(self)
+	player = body
 
-
-func _on_body_exited(_body: PhysicsBody3D) -> void:
+func _on_body_exited(_body: CharacterBody3D) -> void:
 	InteractableManager.erase_interactable_in_range(self)
+	player = null
+	
 
+func player_is_in_line_of_sight() -> bool:
+	if player != null:
+		var space_state := get_world_3d().direct_space_state
+		
+		var params = PhysicsRayQueryParameters3D.create(
+		center_position.global_position, 
+		player.global_position, 
+		player.collision_mask + player.collision_layer, 
+		[self])
+		
+		var result := space_state.intersect_ray(params)
+		if result:
+			return result.collider == player
+			
+	return false
 
 # Below are functions meant to be overridden in subclasses
 

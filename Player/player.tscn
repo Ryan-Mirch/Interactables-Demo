@@ -24,3 +24,5 @@ mesh = SubResource("CapsuleMesh_sda1m")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 4.37114e-08, 1.17124e-08, -4.37114e-08, 0.866025, 0.5, 1.17124e-08, -0.5, 0.866025, -5.53552e-07, 8, 12.3319)
 fov = 35.0
+
+[node name="Center Position" type="Marker3D" parent="."]

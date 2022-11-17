@@ -71,6 +71,7 @@ ui_interact={
 
 [layer_names]
 
+3d_physics/layer_1="Wall or Floor"
 3d_physics/layer_2="Player"
 
 [rendering]

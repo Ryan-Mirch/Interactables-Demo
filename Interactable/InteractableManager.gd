@@ -13,7 +13,7 @@ func _ready() -> void:
 	prompt_container.hide()
 
 
-func _input(event: InputEvent) -> void:	
+func _input(event: InputEvent) -> void:			
 	if event.is_action_pressed("ui_interact"):
 		var interactable := _get_primary_interactable()
 		if interactable != null:
@@ -48,7 +48,7 @@ func update() -> void:
 # @returns an Interactable, or null if no valid interactable was found
 func _get_primary_interactable() -> Interactable:
 	for interactable in interactables_in_range:
-		if interactable.is_interactable():
+		if interactable.is_interactable() and interactable.player_is_in_line_of_sight():
 			return interactable
 		
 	return null

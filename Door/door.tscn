@@ -73,8 +73,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0n2mh")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q21ki"]
-data = PackedVector3Array(-0.1, 1.5, 1, 0.1, 1.5, 1, -0.1, -1.5, 1, 0.1, 1.5, 1, 0.1, -1.5, 1, -0.1, -1.5, 1, 0.1, 1.5, -1, -0.1, 1.5, -1, 0.1, -1.5, -1, -0.1, 1.5, -1, -0.1, -1.5, -1, 0.1, -1.5, -1, 0.1, 1.5, 1, 0.1, 1.5, -1, 0.1, -1.5, 1, 0.1, 1.5, -1, 0.1, -1.5, -1, 0.1, -1.5, 1, -0.1, 1.5, -1, -0.1, 1.5, 1, -0.1, -1.5, -1, -0.1, 1.5, 1, -0.1, -1.5, 1, -0.1, -1.5, -1, 0.1, 1.5, 1, -0.1, 1.5, 1, 0.1, 1.5, -1, -0.1, 1.5, 1, -0.1, 1.5, -1, 0.1, 1.5, -1, -0.1, -1.5, 1, 0.1, -1.5, 1, -0.1, -1.5, -1, 0.1, -1.5, 1, 0.1, -1.5, -1, -0.1, -1.5, -1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_evg7a"]
+size = Vector3(1.20376, 2.59405, 0.223024)
 
 [sub_resource type="Animation" id="Animation_dc4s8"]
 resource_name = "Close"
@@ -116,12 +116,14 @@ _data = {
 "RESET": SubResource("Animation_0ls6j")
 }
 
-[node name="Door" type="Area3D"]
+[node name="Door" type="Area3D" node_paths=PackedStringArray("center_position")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 8.31498)
 collision_layer = 0
 collision_mask = 2
+input_ray_pickable = false
 monitorable = false
 script = ExtResource("1_g6fvp")
+center_position = NodePath("Center Position")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.965697, 0)
@@ -133,10 +135,12 @@ mesh = SubResource("ArrayMesh_b52y4")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+collision_mask = 0
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_q21ki")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30096, 0)
+shape = SubResource("BoxShape3D_evg7a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
@@ -162,3 +166,6 @@ no_depth_test = true
 modulate = Color(0, 0, 0, 1)
 text = "O"
 font_size = 60
+
+[node name="Center Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17189, 0)
