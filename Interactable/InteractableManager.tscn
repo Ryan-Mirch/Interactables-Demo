@@ -33,10 +33,12 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fgus8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PromptContainer"]
+layout_mode = 2
 offset_right = 144.0
 offset_bottom = 43.0
 
 [node name="KeyLabel" type="Label" parent="PromptContainer/HBoxContainer"]
+layout_mode = 2
 offset_right = 34.0
 offset_bottom = 43.0
 theme_override_font_sizes/font_size = 29
@@ -44,6 +46,7 @@ text = "(E)"
 
 [node name="PromptLabel" type="Label" parent="PromptContainer/HBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
 offset_left = 38.0
 offset_right = 144.0
 offset_bottom = 43.0

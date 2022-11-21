@@ -11,12 +11,13 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: CharacterBody3D) -> void:
-	InteractableManager.add_interactable_in_range(self)
 	player = body
+	InteractableManager.add_interactable_in_range(self)
+	
 
 func _on_body_exited(_body: CharacterBody3D) -> void:
-	InteractableManager.erase_interactable_in_range(self)
 	player = null
+	InteractableManager.erase_interactable_in_range(self)	
 	
 
 func player_is_in_line_of_sight() -> bool:

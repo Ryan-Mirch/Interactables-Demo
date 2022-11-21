@@ -29,7 +29,6 @@ func update() -> void:
 	
 	# obtain the most important interactable
 	var interactable := _get_primary_interactable()
-	
 	# if no suitable interactable is in sight, hide the prompt and exit
 	if interactable == null: 
 		prompt_container.hide()
@@ -57,6 +56,7 @@ func _get_primary_interactable() -> Interactable:
 # Adds an interactable to the list, then updates which interactable should be
 # highlighted
 func add_interactable_in_range(interactable: Interactable) -> void:
+	
 	interactables_in_range.insert(0, interactable)
 	update()
 
