@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cyt7v5ipbiyad"
+path="res://.godot/imported/SM_Prop_Chest_Lid_03.obj-44501eed515a773293c03429df2d5559.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SM_Prop_Chest_Lid_03.obj-44501eed515a773293c03429df2d5559.mesh"]
+
+source_file="res://visuals/SM_Prop_Chest_Lid_03.obj"
+dest_files=["res://.godot/imported/SM_Prop_Chest_Lid_03.obj-44501eed515a773293c03429df2d5559.mesh", "res://.godot/imported/SM_Prop_Chest_Lid_03.obj-44501eed515a773293c03429df2d5559.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

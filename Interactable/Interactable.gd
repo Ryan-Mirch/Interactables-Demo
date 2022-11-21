@@ -2,12 +2,15 @@ class_name Interactable extends Area3D
 
 #Used for calculating line of sight
 @export var center_position:Marker3D
+@export var hitboxes:Array[NodePath]
 
 var player:CharacterBody3D = null
 
 func _ready() -> void:
 	connect("body_entered",_on_body_entered)
 	connect("body_exited",_on_body_exited)
+	collision_layer = 0
+	collision_mask = 2
 
 
 func _on_body_entered(body: CharacterBody3D) -> void:
@@ -24,15 +27,19 @@ func player_is_in_line_of_sight() -> bool:
 	if player != null:
 		var space_state := get_world_3d().direct_space_state
 		
+		var exclude = []
+		for nodePath in hitboxes:
+			exclude.append(get_node(nodePath))
+		
 		var params = PhysicsRayQueryParameters3D.create(
 		center_position.global_position, 
 		player.global_position, 
-		player.collision_mask + player.collision_layer, 
-		[self])
+		player.collision_mask, 
+		exclude)
 		
 		var result := space_state.intersect_ray(params)
-		if result:
-			return result.collider == player
+		if result == {}:
+			return true
 			
 	return false
 

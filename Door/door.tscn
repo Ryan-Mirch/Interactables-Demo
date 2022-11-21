@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dw78ks6vukkh2"]
+[gd_scene load_steps=14 format=3 uid="uid://dw78ks6vukkh2"]
 
-[ext_resource type="Script" path="res://Door/Door.gd" id="1_g6fvp"]
-[ext_resource type="AudioStream" uid="uid://b655shlsux7yx" path="res://Door/Close Sound.wav" id="2_vovyy"]
+[ext_resource type="Script" path="res://Door/Door.gd" id="1_wka5g"]
+[ext_resource type="AudioStream" uid="uid://b655shlsux7yx" path="res://Door/Close Sound.wav" id="2_c3knn"]
+[ext_resource type="AudioStream" uid="uid://bxk3lcko7823t" path="res://Door/Open Sound.wav" id="3_yxhjr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ex5t1"]
 size = Vector3(3.45092, 3.4046, 2.47162)
@@ -90,6 +91,20 @@ tracks/0/keys = {
 "points": PackedFloat32Array(-2.5, -0.25, 0, 0.25, 0, -0.2, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Close Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.2,
+"stream": ExtResource("2_c3knn")
+}],
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_w0hvc"]
 resource_name = "Open"
@@ -105,6 +120,20 @@ tracks/0/keys = {
 "points": PackedFloat32Array(-0.2, -0.25, 0, 0.25, 0, -2.5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Open Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_yxhjr")
+}],
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_0ls6j"]
 length = 0.001
@@ -117,13 +146,14 @@ _data = {
 }
 
 [node name="Door" type="Area3D" node_paths=PackedStringArray("center_position")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 8.31498)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -0.0354804)
 collision_layer = 0
 collision_mask = 2
 input_ray_pickable = false
 monitorable = false
-script = ExtResource("1_g6fvp")
+script = ExtResource("1_wka5g")
 center_position = NodePath("Center Position")
+hitboxes = [NodePath("Mesh/StaticBody3D")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.965697, 0)
@@ -151,11 +181,11 @@ libraries = {
 }
 
 [node name="Open Sound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_vovyy")
+stream = ExtResource("3_yxhjr")
 pitch_scale = 1.27
 
 [node name="Close Sound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_vovyy")
+stream = ExtResource("2_c3knn")
 pitch_scale = 0.92
 
 [node name="Highlight" type="Label3D" parent="."]

@@ -55,8 +55,7 @@ func _get_primary_interactable() -> Interactable:
 
 # Adds an interactable to the list, then updates which interactable should be
 # highlighted
-func add_interactable_in_range(interactable: Interactable) -> void:
-	
+func add_interactable_in_range(interactable: Interactable) -> void:	
 	interactables_in_range.insert(0, interactable)
 	update()
 
