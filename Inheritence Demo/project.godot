@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Interactables Demo"
+config/name="Interactables Demo - Inheritance"
 run/main_scene="res://demo.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
