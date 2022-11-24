@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://3r1cl0yy8m0k"]
+
+[ext_resource type="Script" path="res://Interactable/InteractableManager.gd" id="1_7ngqk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgus8"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_7ngqk")
+
+[node name="PromptContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -89.0
+offset_right = 72.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fgus8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PromptContainer"]
+offset_right = 144.0
+offset_bottom = 43.0
+
+[node name="KeyLabel" type="Label" parent="PromptContainer/HBoxContainer"]
+offset_right = 34.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 29
+text = "(E)"
+
+[node name="PromptLabel" type="Label" parent="PromptContainer/HBoxContainer"]
+unique_name_in_owner = true
+offset_left = 38.0
+offset_right = 144.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 29
+text = "Prompt"

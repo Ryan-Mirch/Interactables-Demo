@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyw4v8qpsgtc"]
+
+[ext_resource type="Script" path="res://Chest and Key/Key.gd" id="1_l4ymg"]
+[ext_resource type="ArrayMesh" uid="uid://cifcw4n56xfch" path="res://visuals/SM_Icon_Key_04.obj" id="2_dmtsy"]
+[ext_resource type="AudioStream" uid="uid://2d82yeadi37b" path="res://Chest and Key/Key Picked Up.wav" id="3_atxrw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pfvl8"]
+radius = 1.02666
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_dxeu2"]
+albedo_color = Color(0.956863, 0.847059, 0.156863, 1)
+
+[sub_resource type="Animation" id="Animation_uoe5a"]
+resource_name = "Pickup"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pickup Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_atxrw")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2.5, -0.142307, -0.51124, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.286442),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mnas8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkxct"]
+_data = {
+"Pickup": SubResource("Animation_uoe5a"),
+"RESET": SubResource("Animation_mnas8")
+}
+
+[node name="Key" type="Area3D" node_paths=PackedStringArray("center_position")]
+monitorable = false
+script = ExtResource("1_l4ymg")
+center_position = NodePath("Center Position")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00325459, 0)
+shape = SubResource("SphereShape3D_pfvl8")
+
+[node name="Highlight" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00980975, 0)
+visible = false
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0, 0, 1)
+text = "O"
+font_size = 60
+
+[node name="Center Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447159, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0, 0)
+mesh = ExtResource("2_dmtsy")
+surface_material_override/0 = SubResource("ORMMaterial3D_dxeu2")
+
+[node name="Pickup Sound" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Pickup Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kkxct")
+}
