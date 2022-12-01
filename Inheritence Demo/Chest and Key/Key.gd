@@ -2,7 +2,7 @@ extends Interactable
 
 @export var unlockables: Array[NodePath]
 
-@onready var _highlighter = $Highlight
+@onready var _highlighter: Sprite3D = $Highlight
 @onready var _animation_player = $"Pickup Animation" as AnimationPlayer
 
 var picked_up = false
@@ -10,7 +10,7 @@ var picked_up = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-
+	_highlighter.visible = false
 	
 	
 # Triggers the interaction. Toggles the door open or closed

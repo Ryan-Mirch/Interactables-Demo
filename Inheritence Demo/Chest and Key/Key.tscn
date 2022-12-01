@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyw4v8qpsgtc"]
+[gd_scene load_steps=10 format=3 uid="uid://cyw4v8qpsgtc"]
 
 [ext_resource type="Script" path="res://Chest and Key/Key.gd" id="1_l4ymg"]
 [ext_resource type="ArrayMesh" uid="uid://cifcw4n56xfch" path="res://visuals/SM_Icon_Key_04.obj" id="2_dmtsy"]
 [ext_resource type="AudioStream" uid="uid://2d82yeadi37b" path="res://Chest and Key/Key Picked Up.wav" id="3_atxrw"]
+[ext_resource type="Texture2D" uid="uid://08r2drvui6bk" path="res://visuals/Highlighter.png" id="4_k17ib"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pfvl8"]
 radius = 1.02666
@@ -93,15 +94,6 @@ center_position = NodePath("Center Position")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00325459, 0)
 shape = SubResource("SphereShape3D_pfvl8")
 
-[node name="Highlight" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00980975, 0)
-visible = false
-billboard = 1
-no_depth_test = true
-modulate = Color(0, 0, 0, 1)
-text = "O"
-font_size = 60
-
 [node name="Center Position" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447159, 0)
 
@@ -116,3 +108,9 @@ surface_material_override/0 = SubResource("ORMMaterial3D_dxeu2")
 libraries = {
 "": SubResource("AnimationLibrary_kkxct")
 }
+
+[node name="Highlight" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_k17ib")

@@ -4,12 +4,12 @@ var opened = false
 var unlocked = false
 
 @onready var _animation_player = $"Animations"
-@onready var _highlighter = $Highlight
+@onready var _highlighter: Sprite3D = $Highlight
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-
+	_highlighter.visible = false
 	
 	
 # Triggers the interaction. Toggles the door open or closed

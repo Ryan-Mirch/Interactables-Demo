@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dw78ks6vukkh2"]
+[gd_scene load_steps=15 format=3 uid="uid://dw78ks6vukkh2"]
 
 [ext_resource type="Script" path="res://Door/Door.gd" id="1_wka5g"]
 [ext_resource type="AudioStream" uid="uid://b655shlsux7yx" path="res://Door/Close Sound.wav" id="2_c3knn"]
 [ext_resource type="AudioStream" uid="uid://bxk3lcko7823t" path="res://Door/Open Sound.wav" id="3_yxhjr"]
+[ext_resource type="Texture2D" uid="uid://08r2drvui6bk" path="res://visuals/Highlighter.png" id="4_81jbv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ex5t1"]
 size = Vector3(3.45092, 3.4046, 2.47162)
@@ -188,14 +189,11 @@ pitch_scale = 1.27
 stream = ExtResource("2_c3knn")
 pitch_scale = 0.92
 
-[node name="Highlight" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20967, 0)
-visible = false
-billboard = 1
-no_depth_test = true
-modulate = Color(0, 0, 0, 1)
-text = "O"
-font_size = 60
-
 [node name="Center Position" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17189, 0)
+
+[node name="Highlight" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.10175, 0)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_81jbv")

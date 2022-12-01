@@ -11,6 +11,7 @@ func _ready() -> void:
 	connect("body_exited",_on_body_exited)
 	collision_layer = 0
 	collision_mask = 2
+	
 
 
 func _on_body_entered(body: CharacterBody3D) -> void:

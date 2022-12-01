@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://r2gv61yjy5f5"]
+[gd_scene load_steps=19 format=3 uid="uid://r2gv61yjy5f5"]
 
 [ext_resource type="Script" path="res://Chest and Key/Chest.gd" id="1_wgkkx"]
 [ext_resource type="ArrayMesh" uid="uid://drndo5va3k3vf" path="res://visuals/SM_Prop_Chest_03.obj" id="2_pggdy"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://baopa3uxii8yy" path="res://visuals/SM_Prop_Chest_Treasure_03.obj" id="5_ncyar"]
 [ext_resource type="AudioStream" uid="uid://bo21fhrvh7akf" path="res://Chest and Key/Chest Opened.wav" id="6_3wxcn"]
 [ext_resource type="AudioStream" uid="uid://dbrj62typqr6t" path="res://Chest and Key/Chest Locked.wav" id="7_u82yf"]
+[ext_resource type="Texture2D" uid="uid://08r2drvui6bk" path="res://visuals/Highlighter.png" id="8_6tqkm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqygy"]
 size = Vector3(1.42399, 1.01247, 1.63581)
@@ -209,18 +210,15 @@ libraries = {
 "": SubResource("AnimationLibrary_dwv5a")
 }
 
-[node name="Highlight" type="Label3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.214364, 0)
-visible = false
-billboard = 1
-no_depth_test = true
-modulate = Color(0, 0, 0, 1)
-text = "O"
-font_size = 60
-
 [node name="Center Position" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206917, 0)
 
 [node name="Open Sound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.26562, 0)
 stream = ExtResource("7_u82yf")
+
+[node name="Highlight" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.230499, 0)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("8_6tqkm")
