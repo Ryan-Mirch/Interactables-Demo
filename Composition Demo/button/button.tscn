@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3 uid="uid://dstpghqgv86ix"]
+
+[ext_resource type="Script" path="res://button/button.gd" id="1_s8rbx"]
+[ext_resource type="AudioStream" uid="uid://cy0kpdj0uokj4" path="res://button/Clicks Sound (button hover) 6.wav" id="2_gsdqp"]
+[ext_resource type="Script" path="res://Interactable/Interactable.gd" id="2_y734k"]
+[ext_resource type="Texture2D" uid="uid://0e7xuadfq3ym" path="res://visuals/Highlighter.png" id="3_3a4i5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dm6cb"]
+height = 1.16664
+radius = 1.24649
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_orxlr"]
+height = 0.3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k3axk"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_jjeqm"]
+albedo_color = Color(0.513726, 0.513726, 0.513726, 1)
+emission = Color(0.14902, 0.14902, 0.14902, 1)
+emission_energy_multiplier = 1.63
+refraction_scale = 0.01
+refraction_texture = SubResource("NoiseTexture2D_k3axk")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8cuwi"]
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.3
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_p6b5x"]
+albedo_color = Color(0.878431, 0.0117647, 0, 1)
+emission = Color(0.14902, 0.14902, 0.14902, 1)
+emission_energy_multiplier = 1.63
+refraction_scale = 0.01
+refraction_texture = SubResource("NoiseTexture2D_k3axk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p8vhu"]
+streams_count = 1
+random_pitch = 1.5
+stream_0/stream = ExtResource("2_gsdqp")
+stream_0/weight = 1.0
+
+[sub_resource type="Animation" id="Animation_fvbq4"]
+resource_name = "Press"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("push:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("push:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.434953, -0.25, 0, 0.25, 0, 0.191258, -0.25, 0, 0.25, 0, 0.434953, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("push:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Click Sound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_p8vhu")
+}],
+"times": PackedFloat32Array(0.2)
+}
+
+[sub_resource type="Animation" id="Animation_jm3ym"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("push:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("push:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.434953, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("push:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr32f"]
+_data = {
+"Press": SubResource("Animation_fvbq4"),
+"RESET": SubResource("Animation_jm3ym")
+}
+
+[node name="button" type="Node3D"]
+script = ExtResource("1_s8rbx")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_y734k")
+prompt_text = "Press"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664937, 0)
+shape = SubResource("CylinderShape3D_dm6cb")
+
+[node name="Highlighter" type="Sprite3D" parent="Interactable"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.321969, 0)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("3_3a4i5")
+
+[node name="base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("CylinderMesh_orxlr")
+surface_material_override/0 = SubResource("ORMMaterial3D_jjeqm")
+
+[node name="push" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434953, 0)
+mesh = SubResource("CylinderMesh_8cuwi")
+surface_material_override/0 = SubResource("ORMMaterial3D_p6b5x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_gr32f")
+}
+
+[node name="Click Sound" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 50
+
+[connection signal="body_entered" from="Interactable" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Interactable" to="." method="_on_area_3d_body_exited"]
