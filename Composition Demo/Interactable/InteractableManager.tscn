@@ -1,19 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://3r1cl0yy8m0k"]
+[gd_scene load_steps=3 format=3 uid="uid://tu26ok8vdw53"]
 
 [ext_resource type="Script" path="res://Interactable/InteractableManager.gd" id="1_7ngqk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgus8"]
-bg_color = Color(0.231373, 0.231373, 0.231373, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl62k"]
+bg_color = Color(0.584314, 0.584314, 0.584314, 0.898039)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.960784, 0.960784, 0.960784, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 expand_margin_left = 10.0
-expand_margin_top = 10.0
 expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="InteractableManager" type="CanvasLayer"]
 script = ExtResource("1_7ngqk")
 
 [node name="PromptContainer" type="PanelContainer" parent="."]
@@ -23,33 +26,31 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -89.0
-offset_right = 72.0
-offset_bottom = -46.0
+offset_left = -20.0
+offset_top = -73.0
+offset_right = 20.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fgus8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dl62k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PromptContainer"]
-layout_mode = 2
-offset_right = 144.0
-offset_bottom = 43.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 69.0
+offset_bottom = 37.0
 alignment = 1
 
-[node name="KeyLabel" type="Label" parent="PromptContainer/HBoxContainer"]
-layout_mode = 2
-offset_right = 34.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 29
+[node name="PromptKey" type="Label" parent="PromptContainer/HBoxContainer"]
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 30.0
 text = "(E)"
 
 [node name="PromptLabel" type="Label" parent="PromptContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-offset_left = 38.0
-offset_right = 144.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 29
-text = "Prompt"
-horizontal_alignment = 1
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 66.0
+offset_bottom = 30.0
+text = "Press"

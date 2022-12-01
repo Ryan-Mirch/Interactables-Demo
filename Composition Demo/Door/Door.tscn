@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dw78ks6vukkh2"]
+[gd_scene load_steps=14 format=3 uid="uid://dw78ks6vukkh2"]
 
 [ext_resource type="Script" path="res://Door/Door.gd" id="1_wka5g"]
 [ext_resource type="AudioStream" uid="uid://b655shlsux7yx" path="res://Door/Close Sound.wav" id="2_c3knn"]
 [ext_resource type="AudioStream" uid="uid://bxk3lcko7823t" path="res://Door/Open Sound.wav" id="3_yxhjr"]
+[ext_resource type="PackedScene" uid="uid://curq8hwmjeruu" path="res://Interactable/Interactable.tscn" id="4_cagtf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrar7"]
 resource_name = "Metal"
@@ -146,8 +147,12 @@ _data = {
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -0.0354804)
 script = ExtResource("1_wka5g")
 
+[node name="Interactable" parent="." instance=ExtResource("4_cagtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940553, 0)
+prompt_text = "Open/Close"
+
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 0)
 mesh = SubResource("ArrayMesh_b52y4")
 skeleton = NodePath("")
 
@@ -174,14 +179,3 @@ pitch_scale = 1.27
 [node name="Close Sound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_c3knn")
 pitch_scale = 0.92
-
-[node name="Highlight" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20967, 0)
-billboard = 1
-no_depth_test = true
-outline_modulate = Color(0, 0, 0, 0.141176)
-text = "."
-font_size = 90
-
-[node name="Center Position" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17189, 0)

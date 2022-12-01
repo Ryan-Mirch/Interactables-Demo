@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://curq8hwmjeruu"]
+
+[ext_resource type="Script" path="res://Interactable/Interactable.gd" id="1_g8sni"]
+[ext_resource type="Texture2D" uid="uid://0e7xuadfq3ym" path="res://visuals/Highlighter.png" id="2_tulf4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u8mws"]
+radius = 1.10649
+
+[node name="Interactable" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_g8sni")
+prompt_text = "Press"
+
+[node name="Highlighter" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("2_tulf4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_u8mws")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

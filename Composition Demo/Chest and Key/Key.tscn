@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://Chest and Key/Key.gd" id="1_l4ymg"]
 [ext_resource type="ArrayMesh" uid="uid://cifcw4n56xfch" path="res://visuals/SM_Icon_Key_04.obj" id="2_dmtsy"]
 [ext_resource type="AudioStream" uid="uid://2d82yeadi37b" path="res://Chest and Key/Key Picked Up.wav" id="3_atxrw"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_pfvl8"]
-radius = 1.02666
+[ext_resource type="PackedScene" uid="uid://curq8hwmjeruu" path="res://Interactable/Interactable.tscn" id="4_00tj1"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_dxeu2"]
 albedo_color = Color(0.956863, 0.847059, 0.156863, 1)
@@ -84,25 +82,11 @@ _data = {
 "RESET": SubResource("Animation_mnas8")
 }
 
-[node name="Key" type="Area3D"]
-monitorable = false
+[node name="Key" type="Node3D"]
 script = ExtResource("1_l4ymg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00325459, 0)
-shape = SubResource("SphereShape3D_pfvl8")
-
-[node name="Highlight" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00980975, 0)
-visible = false
-billboard = 1
-no_depth_test = true
-modulate = Color(0, 0, 0, 1)
-text = "O"
-font_size = 60
-
-[node name="Center Position" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447159, 0)
+[node name="Interactable" parent="." instance=ExtResource("4_00tj1")]
+prompt_text = "Grab"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0, 0)

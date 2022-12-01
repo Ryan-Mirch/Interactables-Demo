@@ -4,7 +4,6 @@ var opened = false
 var unlocked = false
 
 @onready var _animation_player = $"Animations"
-@onready var _highlighter = $Highlight
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +11,7 @@ func _ready() -> void:
 	
 	
 # Triggers the interaction. Toggles the door open or closed
-func trigger_interaction() -> void:
+func interact() -> void:
 	if !unlocked: 
 		_animation_player.play("Locked")
 		return
@@ -27,14 +26,3 @@ func is_interactable() -> bool:
 	return !opened
 	
 
-
-# Shows or hides the highlight dot
-func highlight(is_highlighted: bool) -> void:
-	_highlighter.visible = is_highlighted
-
-
-# Gets the interaction name. This is used to display a prompt to the user.
-# @returns the text to write to prompt the user to interact
-func get_prompt_text() -> String:
-	if unlocked: return "Open Chest"
-	else: return "Requires Key"

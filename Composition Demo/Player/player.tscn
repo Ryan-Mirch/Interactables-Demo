@@ -29,4 +29,4 @@ surface_material_override/0 = SubResource("ORMMaterial3D_y2470")
 transform = Transform3D(1, 4.37114e-08, 1.17124e-08, -4.37114e-08, 0.866025, 0.5, 1.17124e-08, -0.5, 0.866025, -5.53552e-07, 8, 12.3319)
 fov = 35.0
 
-[node name="Center Position" type="Marker3D" parent="."]
+[node name="Center" type="Marker3D" parent="."]

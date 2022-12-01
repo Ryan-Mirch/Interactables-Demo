@@ -7,9 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://baopa3uxii8yy" path="res://visuals/SM_Prop_Chest_Treasure_03.obj" id="5_ncyar"]
 [ext_resource type="AudioStream" uid="uid://bo21fhrvh7akf" path="res://Chest and Key/Chest Opened.wav" id="6_3wxcn"]
 [ext_resource type="AudioStream" uid="uid://dbrj62typqr6t" path="res://Chest and Key/Chest Locked.wav" id="7_u82yf"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qqygy"]
-size = Vector3(1.42399, 1.01247, 1.63581)
+[ext_resource type="PackedScene" uid="uid://curq8hwmjeruu" path="res://Interactable/Interactable.tscn" id="8_rdk14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqdla"]
 albedo_texture = ExtResource("3_8eegn")
@@ -170,20 +168,21 @@ _data = {
 "RESET": SubResource("Animation_uqt54")
 }
 
-[node name="Chest" type="Area3D"]
+[node name="Chest" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-monitorable = false
 script = ExtResource("1_wgkkx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527685, 0)
-shape = SubResource("BoxShape3D_qqygy")
+[node name="Interactable" parent="." instance=ExtResource("8_rdk14")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.210856, 0)
+line_of_sight_exceptions = [NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")]
+prompt_text = "Open"
 
 [node name="Bottom" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_pggdy")
 surface_material_override/0 = SubResource("StandardMaterial3D_hqdla")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Bottom"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wkmuc")
@@ -194,6 +193,7 @@ mesh = ExtResource("4_45un4")
 surface_material_override/0 = SubResource("StandardMaterial3D_v7or3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Lid"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lid/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y57so")
@@ -206,18 +206,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wb64h")
 libraries = {
 "": SubResource("AnimationLibrary_dwv5a")
 }
-
-[node name="Highlight" type="Label3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.214364, 0)
-visible = false
-billboard = 1
-no_depth_test = true
-modulate = Color(0, 0, 0, 1)
-text = "O"
-font_size = 60
-
-[node name="Center Position" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206917, 0)
 
 [node name="Open Sound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.26562, 0)

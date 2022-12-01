@@ -1,18 +1,20 @@
 extends Node3D
 
-@onready var animation_player := $AnimationPlayer
-
-var player:CharacterBody3D
+@onready var _animation_player := $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass	
+	_animation_player.animation_finished.connect(
+		func(anim_name): 
+			InteractableManager.update()
+	)
 	
 	
-func _interacted():
-	animation_player.play("Press")
+func interact():
+	_animation_player.play("Press")
+	InteractableManager.update()
+	
+	
+func is_interactable() -> bool:
+	return !_animation_player.is_playing()
+
