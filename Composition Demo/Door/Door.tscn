@@ -147,9 +147,15 @@ _data = {
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -0.0354804)
 script = ExtResource("1_wka5g")
 
-[node name="Interactable" parent="." instance=ExtResource("4_cagtf")]
+[node name="Interaction - OpenClose" parent="." instance=ExtResource("4_cagtf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940553, 0)
-prompt_text = "Open/Close"
+prompt_text = "(E) Open"
+
+[node name="Interaction - Examine" parent="." instance=ExtResource("4_cagtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+prompt_text = "(I) Examine"
+interact_action = "ui_examine"
+interact_function = "examine"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.2, 0)

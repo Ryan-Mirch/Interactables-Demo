@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgc3rqx0ymkrk"]
+
+[ext_resource type="Script" path="res://NPC/NPC.gd" id="1_442cs"]
+[ext_resource type="Texture2D" uid="uid://ikeidi6r7fyp" path="res://visuals/Texture_01_A.png" id="1_lp5vg"]
+[ext_resource type="ArrayMesh" uid="uid://c2ijpsuyfj5au" path="res://visuals/Human.res" id="2_6bxha"]
+[ext_resource type="PackedScene" uid="uid://curq8hwmjeruu" path="res://Interactable/Interactable.tscn" id="4_gplyr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj2tc"]
+albedo_texture = ExtResource("1_lp5vg")
+
+[node name="Human" type="Node3D"]
+script = ExtResource("1_442cs")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.015, -1.31134e-09, 5.73206e-17, 0, -6.5567e-10, -0.015, 1.31134e-09, -0.015, 6.55671e-10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uj2tc")
+mesh = ExtResource("2_6bxha")
+skeleton = NodePath("../..")
+
+[node name="Interaction - Talk" parent="." instance=ExtResource("4_gplyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.612, 0)
+prompt_text = "(E) Talk"
+
+[node name="Interaction - Examine" parent="." instance=ExtResource("4_gplyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61159, 0)
+prompt_text = "(I) Examine"
+interact_action = "ui_examine"
+interact_function = "examine"

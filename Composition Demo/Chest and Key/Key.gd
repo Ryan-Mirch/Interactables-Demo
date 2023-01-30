@@ -22,6 +22,12 @@ func interact() -> void:
 	InteractableManager.update()
 	
 	
+func examine() -> void:
+	print(name + " examined")
+	
+	
 # Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
 	return !picked_up
+	
+

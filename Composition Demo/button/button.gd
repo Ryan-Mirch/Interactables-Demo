@@ -17,4 +17,7 @@ func interact():
 	
 func is_interactable() -> bool:
 	return !_animation_player.is_playing()
+	
+func examine() -> void:
+	print(name + " examined")
 

@@ -172,10 +172,16 @@ _data = {
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_wgkkx")
 
-[node name="Interactable" parent="." instance=ExtResource("8_rdk14")]
+[node name="Interaction - Open" parent="." instance=ExtResource("8_rdk14")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.210856, 0)
 line_of_sight_exceptions = [NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")]
-prompt_text = "Open"
+prompt_text = "(E) Open"
+
+[node name="Interaction - Examine" parent="." instance=ExtResource("8_rdk14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+prompt_text = "(I) Examine"
+interact_action = "ui_examine"
+interact_function = "examine"
 
 [node name="Bottom" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_pggdy")

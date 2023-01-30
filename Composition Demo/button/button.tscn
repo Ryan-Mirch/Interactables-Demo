@@ -130,8 +130,15 @@ _data = {
 [node name="button" type="Node3D"]
 script = ExtResource("1_s8rbx")
 
-[node name="Interactable" parent="." instance=ExtResource("2_bskv6")]
+[node name="Interaction - Press" parent="." instance=ExtResource("2_bskv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422725, 0)
+prompt_text = "(E) Press"
+
+[node name="Interaction - Examine" parent="." instance=ExtResource("2_bskv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+prompt_text = "(I) Examine"
+interact_action = "ui_examine"
+interact_function = "examine"
 
 [node name="base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)

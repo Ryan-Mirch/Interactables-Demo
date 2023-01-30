@@ -85,8 +85,14 @@ _data = {
 [node name="Key" type="Node3D"]
 script = ExtResource("1_l4ymg")
 
-[node name="Interactable" parent="." instance=ExtResource("4_00tj1")]
-prompt_text = "Grab"
+[node name="Interaction - Take" parent="." instance=ExtResource("4_00tj1")]
+prompt_text = "(E) Take"
+
+[node name="Interaction - Examine" parent="." instance=ExtResource("4_00tj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+prompt_text = "(I) Examine"
+interact_action = "ui_examine"
+interact_function = "examine"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0, 0)

@@ -7,15 +7,29 @@ class_name Interactable extends Area3D
 @export var line_of_sight_exceptions:Array[NodePath]
 @export var prompt_text = "Interact"
 @export var require_line_of_sight = true
+@export var interact_action = "ui_interact"
+@export var interact_function = "interact"
 
 var player:CharacterBody3D = null
+var active = false
 
 
 
 func _ready() -> void:
-	highlighter.visible = false	
+	add_to_group("Interactable")
+	deactivate()
 	
 
+# Called by Interaction Manager
+func activate():
+	active = true
+	
+	
+# Called by Interaction Manager
+func deactivate():
+	active = false
+	set_highlighter_visibility(false)
+	
 
 func _on_body_entered(body: CharacterBody3D) -> void:
 	player = body
@@ -24,7 +38,7 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 
 func _on_body_exited(_body: CharacterBody3D) -> void:
 	player = null
-	InteractableManager.erase_interactable_in_range(self)	
+	InteractableManager.erase_interactable_in_range(self)
 	
 
 func player_is_in_line_of_sight() -> bool:
@@ -60,13 +74,13 @@ func is_interactable() -> bool:
 		return false
 
 
-# Triggers the interaction. 
+# Triggers the interaction.
 func trigger_interaction() -> void:
-	if get_parent().has_method("interact"):
-		return get_parent().interact()
+	if get_parent().has_method(interact_function) and active:
+		get_parent().call(interact_function)
+		
 	else:
-		printerr("please implement an 'interact' method for: " + str(get_parent().name))
+		printerr("Please implement the method '" + interact_function + "' for: " + str(get_parent().name))
 
-
-func highlight(_is_highlighted: bool) -> void:
-	highlighter.visible = _is_highlighted
+func set_highlighter_visibility(value: bool) -> void:
+	highlighter.visible = value

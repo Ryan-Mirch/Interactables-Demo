@@ -19,6 +19,10 @@ func interact() -> void:
 	opened = true
 	_animation_player.play("Open")
 	InteractableManager.update()
+	
+	
+func examine() -> void:
+	print(name + " examined")
 
 
 # Returns `true` if no animation is currently playing
