@@ -8,6 +8,21 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj2tc"]
 albedo_texture = ExtResource("1_lp5vg")
 
+[sub_resource type="Animation" id="Animation_nmxuf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Voiceline:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_n40hl"]
 resource_name = "Talk"
 length = 3.0
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_nmxuf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Voiceline:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5mbvv"]

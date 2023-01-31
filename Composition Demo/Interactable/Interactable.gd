@@ -1,6 +1,6 @@
 class_name Interactable extends Area3D
 
-@onready var highlighter = $Highlighter
+@onready var highlighter := $Highlighter
 
 
 # These colliders will be ignored by the line of sight raycast
@@ -13,28 +13,30 @@ class_name Interactable extends Area3D
 @export var interact_function = "interact"
 
 var player:CharacterBody3D = null
-var active = false
-var disabled = false
+var active := false
 
+# if disabled, "is_interactable" will always return false
+var disabled := false
 
 
 func _ready() -> void:
 	add_to_group("Interactable")
 	deactivate()
 	
+	
 # If active, this interactable is currently able to be interacted with.
 # Called by Interaction Manager.
-func activate():
+func activate() -> void:
 	active = true
 	
 	
 # Called by Interaction Manager
-func deactivate():
+func deactivate() -> void:
 	active = false
 	set_highlighter_visibility(false)
 	
 
-func disable():
+func disable() -> void:
 	disabled = true
 	
 

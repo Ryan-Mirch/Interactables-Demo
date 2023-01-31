@@ -29,7 +29,7 @@ func interact() -> void:
 	
 func examine() -> void:
 	if(opened):
-		ExamineManager.examine("A chest that I opened with the key.")
+		ExamineManager.examine("Treasure!")
 		
 	else:
 		ExamineManager.examine("It's locked. There must be a key somewhere...")
