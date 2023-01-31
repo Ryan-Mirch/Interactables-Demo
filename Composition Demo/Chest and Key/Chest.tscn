@@ -178,7 +178,8 @@ line_of_sight_exceptions = [NodePath("../Bottom/StaticBody3D"), NodePath("../Lid
 prompt_text = "(E) Open"
 
 [node name="Interaction - Examine" parent="." instance=ExtResource("8_rdk14")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.210856, 0)
+line_of_sight_exceptions = [NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")]
 prompt_text = "(I) Examine"
 interact_action = "ui_examine"
 interact_function = "examine"

@@ -22,7 +22,11 @@ func open_close() -> void:
 	
 
 func examine() -> void:
-	print(name + " examined")
+	if (_is_open):
+		ExamineManager.examine("A Sci-Fi sliding door that is currently open.")
+		
+	else:
+		ExamineManager.examine("A Sci-Fi sliding door that is currently closed.")
 
 
 func is_interactable() -> bool:

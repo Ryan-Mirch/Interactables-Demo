@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dstpghqgv86ix"]
+[gd_scene load_steps=13 format=3 uid="uid://kcns3jci4f5a"]
 
-[ext_resource type="Script" path="res://button/button.gd" id="1_s8rbx"]
-[ext_resource type="PackedScene" uid="uid://curq8hwmjeruu" path="res://Interactable/Interactable.tscn" id="2_bskv6"]
-[ext_resource type="AudioStream" uid="uid://cy0kpdj0uokj4" path="res://button/Clicks Sound (button hover) 6.wav" id="2_gsdqp"]
+[ext_resource type="Script" path="res://Button/button.gd" id="1_ggt4w"]
+[ext_resource type="PackedScene" uid="uid://curq8hwmjeruu" path="res://Interactable/Interactable.tscn" id="2_q08oe"]
+[ext_resource type="AudioStream" uid="uid://cy0kpdj0uokj4" path="res://Button/Clicks Sound (button hover) 6.wav" id="3_tuygl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_orxlr"]
 height = 0.3
@@ -32,7 +32,7 @@ refraction_texture = SubResource("NoiseTexture2D_k3axk")
 streams_count = 1
 playback_mode = 1
 random_pitch = 1.5
-stream_0/stream = ExtResource("2_gsdqp")
+stream_0/stream = ExtResource("3_tuygl")
 stream_0/weight = 1.0
 
 [sub_resource type="Animation" id="Animation_fvbq4"]
@@ -128,13 +128,13 @@ _data = {
 }
 
 [node name="button" type="Node3D"]
-script = ExtResource("1_s8rbx")
+script = ExtResource("1_ggt4w")
 
-[node name="Interaction - Press" parent="." instance=ExtResource("2_bskv6")]
+[node name="Interaction - Press" parent="." instance=ExtResource("2_q08oe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422725, 0)
 prompt_text = "(E) Press"
 
-[node name="Interaction - Examine" parent="." instance=ExtResource("2_bskv6")]
+[node name="Interaction - Examine" parent="." instance=ExtResource("2_q08oe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
 prompt_text = "(I) Examine"
 interact_action = "ui_examine"

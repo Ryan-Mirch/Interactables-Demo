@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://dilqmk77cdehk"]
+
+[ext_resource type="Script" path="res://Examine/ExamineManager.gd" id="1_qkpda"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i4bkb"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_y7rnh"]
+resource_name = "Examine"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 1.4, 2)
+}
+
+[sub_resource type="Animation" id="Animation_bo632"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qw4t7"]
+_data = {
+"Examine": SubResource("Animation_y7rnh"),
+"RESET": SubResource("Animation_bo632")
+}
+
+[node name="ExamineManager" type="CanvasLayer"]
+script = ExtResource("1_qkpda")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -50.0
+offset_right = 476.0
+offset_bottom = -24.0
+grow_vertical = 0
+text = "Examine Text"
+label_settings = SubResource("LabelSettings_i4bkb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qw4t7")
+}

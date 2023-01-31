@@ -20,5 +20,5 @@ func is_interactable() -> bool:
 	
 	
 func examine() -> void:
-	print(name + " examined")
+	ExamineManager.examine("A giant, red, extremely pressable button.")
 

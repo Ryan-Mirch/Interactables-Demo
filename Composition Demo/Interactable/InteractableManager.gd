@@ -106,7 +106,7 @@ func _get_interactables_to_activate() -> Array[Node]:
 	# Add every interactable that is a sibling of the closest interactable
 	# Sibling meaning a child of its parent.
 	for sibling in closest_interactable.get_parent().get_children():
-		if sibling is Interactable and sibling != closest_interactable:
+		if sibling is Interactable and sibling != closest_interactable and sibling.is_interactable():
 			result.append(sibling)
 	
 	# This makes the interactables higher up in the tree to appear first in the array,	

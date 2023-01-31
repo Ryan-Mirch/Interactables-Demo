@@ -14,6 +14,7 @@ class_name Interactable extends Area3D
 
 var player:CharacterBody3D = null
 var active = false
+var disabled = false
 
 
 
@@ -31,6 +32,10 @@ func activate():
 func deactivate():
 	active = false
 	set_highlighter_visibility(false)
+	
+
+func disable():
+	disabled = true
 	
 
 # When the player is in range, add this interactable to the list of interactables in range.
@@ -81,6 +86,8 @@ func player_is_in_line_of_sight() -> bool:
 # Some objects might not be interactable at certain times.
 # For example, the door is not interactable while the open or close animation is playing.
 func is_interactable() -> bool:
+	if disabled: return false
+	
 	if get_parent().has_method("is_interactable"):
 		return get_parent().is_interactable()
 	else:

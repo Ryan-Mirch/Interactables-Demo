@@ -23,7 +23,7 @@ func interact() -> void:
 	
 	
 func examine() -> void:
-	print(name + " examined")
+	ExamineManager.examine("This probably unlocks the chest.")
 	
 	
 # Returns `true` if no animation is currently playing
