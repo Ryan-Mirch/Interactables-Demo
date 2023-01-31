@@ -150,6 +150,7 @@ script = ExtResource("1_wka5g")
 [node name="Interaction - OpenClose" parent="." instance=ExtResource("4_cagtf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940553, 0)
 prompt_text = "(E) Open"
+interact_function = "open_close"
 
 [node name="Interaction - Examine" parent="." instance=ExtResource("4_cagtf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)

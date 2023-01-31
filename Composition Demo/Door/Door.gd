@@ -11,8 +11,7 @@ func _ready() -> void:
 	_animation_player.connect("animation_finished", _on_animation_player_animation_finished)
 
 
-# Triggers the interaction. Toggles the door open or closed
-func interact() -> void:	
+func open_close() -> void:	
 	if _is_open:
 		_animation_player.play("Close")
 		_interaction_open_close.prompt_text = "(E) Open"
@@ -26,10 +25,8 @@ func examine() -> void:
 	print(name + " examined")
 
 
-# Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
 	return !_animation_player.is_playing()
-
 
 
 func _on_animation_player_animation_finished(animation_name: String) -> void:
