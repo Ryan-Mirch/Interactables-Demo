@@ -55,7 +55,7 @@ func update_interactables_in_range() -> void:
 ## @returns an Interactable, or null if no valid interactable was found
 func _get_primary_interactable() -> Interactable:
 		
-	var valid_interactables = []
+	var valid_interactables: Array[Interactable] = []
 	
 	for interactable in interactables_in_range:
 		if interactable.is_interactable() and interactable.player_is_in_line_of_sight():
@@ -65,11 +65,11 @@ func _get_primary_interactable() -> Interactable:
 		return null
 	
 	
-	var closest_interactable = valid_interactables[0]
-	var smallest_distance = closest_interactable.global_position.distance_to(player.global_position)
+	var closest_interactable := valid_interactables[0]
+	var smallest_distance := closest_interactable.global_position.distance_to(player.global_position)
 	
 	for interactable in valid_interactables:
-		var check_distance = interactable.global_position.distance_to(player.global_position)
+		var check_distance := interactable.global_position.distance_to(player.global_position)
 		if check_distance < smallest_distance:
 			smallest_distance = check_distance
 			closest_interactable = interactable

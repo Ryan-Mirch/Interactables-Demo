@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 
-func examine(text):
+func examine(text: String) -> void:
 	label.text = text
 	animationPlayer.stop()
 	animationPlayer.play("Examine")

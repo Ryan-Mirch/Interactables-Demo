@@ -77,6 +77,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ojlel"]
 resource_name = "Open"
@@ -127,6 +128,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_uqt54"]
 length = 0.001
@@ -176,7 +178,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 monitorable = false
 script = ExtResource("1_wgkkx")
 center_position = NodePath("Center Position")
-hitboxes = [NodePath("Bottom/StaticBody3D"), NodePath("Lid/StaticBody3D")]
+hitboxes = Array[NodePath]([NodePath("Bottom/StaticBody3D"), NodePath("Lid/StaticBody3D")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527685, 0)

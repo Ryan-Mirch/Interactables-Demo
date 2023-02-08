@@ -5,7 +5,7 @@ extends Interactable
 @onready var _highlighter: Sprite3D = $Highlight
 
 ## Tracks the door's state. Changes at the end of an animation
-var _is_open = false
+var _is_open := false
 
 
 func _ready() -> void:

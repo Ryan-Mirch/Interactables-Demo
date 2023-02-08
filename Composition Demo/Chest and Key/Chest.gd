@@ -1,19 +1,14 @@
 extends Node3D
 
-@onready var open_interactable = $"Interaction - Open"
+@onready var open_interactable: Interactable = $"Interaction - Open"
+@onready var _animation_player: AnimationPlayer = $"Animations"
 
-var opened = false
 
+var opened := false
 ## Set to true if the player has the key
-var unlocked = false
+var unlocked := false
 
-@onready var _animation_player = $"Animations"
 
-## Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-	
-	
 ## Triggers the interaction. Toggles the door open or closed
 func interact() -> void:	
 	if !unlocked: 

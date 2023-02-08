@@ -91,11 +91,11 @@ func _get_interactables_to_activate() -> Array[Interactable]:
 		return result	
 	
 	# The following finds the closest valid interactable.
-	var closest_interactable = valid_interactables[0] as Interactable
-	var smallest_distance = closest_interactable.global_position.distance_to(player.global_position)
+	var closest_interactable := valid_interactables[0]
+	var smallest_distance := closest_interactable.global_position.distance_to(player.global_position)
 	
 	for interactable in valid_interactables:
-		var check_distance = interactable.global_position.distance_to(player.global_position)
+		var check_distance := interactable.global_position.distance_to(player.global_position)
 		if check_distance < smallest_distance:
 			smallest_distance = check_distance
 			closest_interactable = interactable
@@ -117,7 +117,7 @@ func _get_interactables_to_activate() -> Array[Interactable]:
 	
 	
 ## Sorts based on its index in the tree.
-func sort_child_order(a, b) -> bool:
+func sort_child_order(a: Node, b: Node) -> bool:
 	return a.get_index() < b.get_index()
 	
 

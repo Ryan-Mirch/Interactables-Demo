@@ -1,9 +1,9 @@
-extends Interactable
+class_name Chest extends Interactable
 
-var opened = false
-var unlocked = false
+var opened := false
+var unlocked := false
 
-@onready var _animation_player = $"Animations"
+@onready var _animation_player: AnimationPlayer = $"Animations"
 @onready var _highlighter: Sprite3D = $Highlight
 
 

@@ -2,15 +2,16 @@ class_name Interactable extends Area3D
 
 @onready var highlighter := $Highlighter
 
-
+# TODO: replace this with Array[PhysicsBody3D] when 
+# https://github.com/godotengine/godot/issues/66698 is fixed
 ## These colliders will be ignored by the line of sight raycast
 @export var line_of_sight_exceptions:Array[NodePath]
-@export var prompt_text = "Interact"
-@export var require_line_of_sight = true
-@export var interact_action = "ui_interact"
+@export var prompt_text := "Interact"
+@export var require_line_of_sight := true
+@export var interact_action := "ui_interact"
 
 ## The function that gets called if the interact action is pressed
-@export var interact_function = "interact"
+@export var interact_function := "interact"
 
 var player:Player = null
 var active := false
@@ -22,8 +23,16 @@ var disabled := false
 func _ready() -> void:
 	add_to_group("Interactable")
 	deactivate()
-	
-	
+	# TODO: when Array[NodePath] is replaced with Array[PhysicsBody3D], this won't be
+	# necessary anymore
+	if OS.is_debug_build():
+		for index in line_of_sight_exceptions.size():
+			var node_path := line_of_sight_exceptions[index]
+			assert(node_path != null and not node_path.is_empty(), "node %s is null"%[index])
+			assert(get_node(node_path) is PhysicsBody3D, "Node %s is not a PhysicsBody3D"%[node_path])
+
+
+
 ## If active, this interactable is currently able to be interacted with.
 ## Called by Interaction Manager.
 func activate() -> void:
@@ -66,15 +75,17 @@ func player_is_in_line_of_sight() -> bool:
 	if player != null:
 		var space_state := get_world_3d().direct_space_state
 		
-		var exceptions = []
+		var exceptions: Array[RID] = []
 		for nodePath in line_of_sight_exceptions:
-			exceptions.append(get_node(nodePath))
+			# TODO: casting `as PhysicsBody3D` won't be necessary once the array is typed
+			exceptions.append((get_node(nodePath) as PhysicsBody3D).get_rid())
 		
-		var params = PhysicsRayQueryParameters3D.create(
-		global_position, 
-		player.global_position, 
-		player.collision_mask, 
-		exceptions)
+		var params := PhysicsRayQueryParameters3D.create(
+			global_position, 
+			player.global_position, 
+			player.collision_mask, 
+			exceptions
+		)
 		
 		var result := space_state.intersect_ray(params)
 		if result == {}:

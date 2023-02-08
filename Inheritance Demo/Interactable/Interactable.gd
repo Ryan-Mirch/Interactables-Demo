@@ -2,7 +2,11 @@ class_name Interactable extends Area3D
 
 ## Used for calculating line of sight
 @export var center_position:Marker3D
-@export var hitboxes:Array[NodePath]
+
+
+# TODO: replace this with Array[PhysicsBody3D] when 
+# https://github.com/godotengine/godot/issues/66698 is fixed
+@export var hitboxes: Array[NodePath]
 
 var player: Player = null
 
@@ -12,6 +16,13 @@ func _ready() -> void:
 	connect("body_exited",_on_body_exited)
 	collision_layer = 0
 	collision_mask = 2
+	# TODO: when Array[NodePath] is replaced with Array[PhysicsBody3D], this won't be
+	# necessary anymore
+	if OS.is_debug_build():
+		for index in hitboxes.size():
+			var node_path := hitboxes[index]
+			assert(node_path != null and not node_path.is_empty(), "node %s is null"%[index])
+			assert(get_node(node_path) is PhysicsBody3D, "Node %s is not a PhysicsBody3D"%[node_path])
 
 
 func _on_body_entered(body: CharacterBody3D) -> void:
@@ -28,15 +39,18 @@ func player_is_in_line_of_sight() -> bool:
 	if player != null:
 		var space_state := get_world_3d().direct_space_state
 		
-		var exclude = []
-		for nodePath in hitboxes:
-			exclude.append(get_node(nodePath))
+		var exclude: Array[RID] = []
 		
-		var params = PhysicsRayQueryParameters3D.create(
-		center_position.global_position, 
-		player.global_position, 
-		player.collision_mask, 
-		exclude)
+		for nodePath in hitboxes:
+			# TODO: casting `as PhysicsBody3D` won't be necessary once the array is typed
+			exclude.append((get_node(nodePath) as PhysicsBody3D).get_rid())
+		
+		var params := PhysicsRayQueryParameters3D.create(
+			center_position.global_position, 
+			player.global_position, 
+			player.collision_mask, 
+			exclude
+		)
 		
 		var result := space_state.intersect_ray(params)
 		if result == {}:
