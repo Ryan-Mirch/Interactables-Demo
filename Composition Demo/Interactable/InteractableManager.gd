@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var prompt_label: Label = %PromptLabel 
 @onready var prompt_container: PanelContainer = %PromptContainer
 
-var player
+var player: Player
 
 # Keeps track of any interactable that can be interacted with
 var interactables_in_range: Array[Interactable] = []
@@ -13,13 +13,13 @@ var interactables_in_range: Array[Interactable] = []
 
 func _ready() -> void:
 	prompt_container.hide()
-	
-	
+
+
 func _process(_delta: float) -> void:
 	
 	# If there is more than 1 interactable in range, and the player has moved,
 	# update the interactables
-	if interactables_in_range.size() > 1 and player.velocity != Vector3.ZERO:
+	if interactables_in_range.size() > 1 and player != null and player.velocity != Vector3.ZERO:
 		update()
 
 # Reads interactable inputs, and triggers the interactions
@@ -71,14 +71,14 @@ func update() -> void:
 
 
 # Out of all the interactables in range, this finds the interactable that is 
-# 	best interacted with and returns an array of it plus all its sibling interactables. 
-# Currently, this finds the closest interactables, but you could insert
+# best interacted with and returns an array of it plus all its sibling interactables. 
+# Currently, this finds the closest interactables, but you could change it to
 # any logic necessary for your game here; most urgent item, most dangerous, highest priority, etc
 # @returns an Array[Interactable], or an empty Array if no valid interactables were found.
-func _get_interactables_to_activate() -> Array[Node]:
+func _get_interactables_to_activate() -> Array[Interactable]:
 	
-	var valid_interactables = []
-	var result = []
+	var valid_interactables: Array[Interactable] = []
+	var result: Array[Interactable] = []
 	
 	# Get all interactables that can actually be interacted with, which I call
 	# 	"valid interactables".

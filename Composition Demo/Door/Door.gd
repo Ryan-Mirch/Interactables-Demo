@@ -8,7 +8,7 @@ var _is_open = false
 
 
 func _ready() -> void:
-	_animation_player.connect("animation_finished", _on_animation_player_animation_finished)
+	_animation_player.animation_finished.connect(_on_animation_player_animation_finished)
 
 
 func open_close() -> void:	

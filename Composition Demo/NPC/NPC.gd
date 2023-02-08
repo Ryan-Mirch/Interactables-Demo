@@ -10,14 +10,10 @@ func _ready() -> void:
 	_animation_player.animation_finished.connect(_on_animation_finished)
 
 
-func _on_animation_finished(animation_name):
+func _on_animation_finished(_animation_name: String) -> void:
 	InteractableManager.update()
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+
 # Triggers the interaction. Toggles the door open or closed
 func interact() -> void:
 	_animation_player.play("Talk")
@@ -27,9 +23,9 @@ func interact() -> void:
 
 # Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
-	return !_animation_player.is_playing()
-	
-	
+	return (not _animation_player.is_playing())
+
+
 func examine() -> void:
 	if(!talked_to):
 		ExamineManager.examine("A guy. I should try talking to him.")
