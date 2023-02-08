@@ -27,7 +27,8 @@ func _process(_delta: float) -> void:
 #	triggering multiple interactables at the same time.
 func _input(event: InputEvent) -> void:
 	for interactable in interactables_in_range:
-		if !interactable.active: continue
+		if not interactable.active:
+			continue
 		
 		if event.is_action_pressed(interactable.interact_action):
 			interactable.trigger_interaction()

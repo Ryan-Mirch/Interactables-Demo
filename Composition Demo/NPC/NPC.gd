@@ -27,8 +27,8 @@ func is_interactable() -> bool:
 
 
 func examine() -> void:
-	if(!talked_to):
+	if not talked_to:
 		ExamineManager.examine("A guy. I should try talking to him.")
 		
-	if(talked_to):
+	if talked_to:
 		ExamineManager.examine("A guy. Not really the talkative type.")

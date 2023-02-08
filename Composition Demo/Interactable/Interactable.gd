@@ -66,7 +66,7 @@ func _on_body_exited(_body: CharacterBody3D) -> void:
 func player_is_in_line_of_sight() -> bool:
 	
 	# if line of sight is not required, return true regardless
-	if !require_line_of_sight:
+	if not require_line_of_sight:
 		return true
 		
 	# Shoot a raycast from this interactables position to the players position.

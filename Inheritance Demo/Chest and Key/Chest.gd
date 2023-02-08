@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 ## Triggers the interaction. Toggles the door open or closed
 func trigger_interaction() -> void:
-	if !unlocked: 
+	if not unlocked: 
 		_animation_player.play("Locked")
 		return
 		
@@ -26,7 +26,7 @@ func trigger_interaction() -> void:
 
 ## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
-	return !opened
+	return not opened
 
 
 ## Shows or hides the highlight dot

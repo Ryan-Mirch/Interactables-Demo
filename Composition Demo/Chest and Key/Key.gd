@@ -35,6 +35,6 @@ func examine() -> void:
 	
 ## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
-	return !picked_up
+	return not picked_up
 	
 

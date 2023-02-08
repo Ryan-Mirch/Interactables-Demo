@@ -22,7 +22,7 @@ func open_close() -> void:
 	
 
 func examine() -> void:
-	if (_is_open):
+	if _is_open:
 		ExamineManager.examine("A Sci-Fi sliding door that is currently open.")
 		
 	else:
@@ -30,7 +30,7 @@ func examine() -> void:
 
 
 func is_interactable() -> bool:
-	return !_animation_player.is_playing()
+	return not _animation_player.is_playing()
 
 
 func _on_animation_player_animation_finished(animation_name: String) -> void:

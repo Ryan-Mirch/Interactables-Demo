@@ -25,7 +25,7 @@ func trigger_interaction() -> void:
 	
 ## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
-	return !_animation_player.is_playing()
+	return not _animation_player.is_playing()
 	
 
 

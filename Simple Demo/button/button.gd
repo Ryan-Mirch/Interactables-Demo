@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 	if player == null: return
 	
 	#player is in range
-	if event.is_action_pressed("interact") and !animation_player.is_playing():
+	if event.is_action_pressed("interact") and not animation_player.is_playing():
 		_interacted()
 
 

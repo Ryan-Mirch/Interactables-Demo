@@ -11,7 +11,7 @@ var unlocked := false
 
 ## Triggers the interaction. Toggles the door open or closed
 func interact() -> void:	
-	if !unlocked: 
+	if not unlocked: 
 		_animation_player.play("Locked")
 		return
 		
@@ -23,7 +23,7 @@ func interact() -> void:
 	
 	
 func examine() -> void:
-	if(opened):
+	if opened:
 		ExamineManager.examine("Treasure!")
 		
 	else:
