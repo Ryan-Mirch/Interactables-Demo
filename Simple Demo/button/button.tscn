@@ -86,6 +86,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0.2)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jm3ym"]
 length = 0.001
@@ -151,7 +152,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664937, 0)
 shape = SubResource("CylinderShape3D_dm6cb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_gr32f")
 }
@@ -167,6 +167,3 @@ outline_size = 10
 
 [node name="Click Sound" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 50
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
