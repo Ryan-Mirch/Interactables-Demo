@@ -5,7 +5,7 @@ extends Node3D
 var talked_to := false
 
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -14,14 +14,14 @@ func _on_animation_finished(_animation_name: String) -> void:
 	InteractableManager.update()
 
 
-# Triggers the interaction. Toggles the door open or closed
+## Triggers the interaction. Toggles the door open or closed
 func interact() -> void:
 	_animation_player.play("Talk")
 	talked_to = true
 	InteractableManager.update()
 
 
-# Returns `true` if no animation is currently playing
+## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
 	return (not _animation_player.is_playing())
 

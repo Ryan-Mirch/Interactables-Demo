@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var _animation_player := $AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_animation_player.animation_finished.connect(
 		# we're forced to have this intermediary function because the `finished` 

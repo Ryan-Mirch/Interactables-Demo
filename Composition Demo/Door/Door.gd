@@ -3,7 +3,7 @@ extends Node3D
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _interaction_open_close: Interactable = $"Interaction - OpenClose"
 
-# Tracks the door's state. Changes at the end of an animation
+## Tracks the door's state. Changes at the end of an animation
 var _is_open = false
 
 

@@ -1,6 +1,6 @@
 class_name Interactable extends Area3D
 
-# Used for calculating line of sight
+## Used for calculating line of sight
 @export var center_position:Marker3D
 @export var hitboxes:Array[NodePath]
 
@@ -46,33 +46,33 @@ func player_is_in_line_of_sight() -> bool:
 
 ###############################################################################
 #
-# Below are functions meant to be overridden in subclasses
+## Below are functions meant to be overridden in subclasses
 #
 
-# Returns true if the object is currently interactable.
-# Returns `true` by default, override in sub-classes to change the behavior.
-# @returns `true` if the interactable is ready to be interacted with, `false` 
-#           otherwise. Specifics are left to the discretion of subclasses
+## Returns true if the object is currently interactable.
+## Returns `true` by default, override in sub-classes to change the behavior.
+## @returns `true` if the interactable is ready to be interacted with, `false` 
+##           otherwise. Specifics are left to the discretion of subclasses
 func is_interactable() -> bool:
 	return true
 
 
-# Triggers the interaction. Override this in sub-classes to change the behavior.
-# What this does depends on each specific subclass implementation
+## Triggers the interaction. Override this in sub-classes to change the behavior.
+## What this does depends on each specific subclass implementation
 func trigger_interaction() -> void:
 	printerr("This is an abstract method destined to be overridden in subclasses")
 
 
-# Gets the interaction name. This is used to display a prompt to the user.
-# @returns the text to write to prompt the user to interact
+## Gets the interaction name. This is used to display a prompt to the user.
+## @returns the text to write to prompt the user to interact
 func get_prompt_text() -> String:
 	return "Prompt"
 
 
-# Highlights the interactable. This cannot be done generically because it is going.
-# to depend on the specific interactable.
-# Override in sub-classes to change the behavior.
-# @param is_highlighted if true, highlights the interactable. Behavior is left 
-#                       at the discretion of the subclass implementation.
+## Highlights the interactable. This cannot be done generically because it is going.
+## to depend on the specific interactable.
+## Override in sub-classes to change the behavior.
+## @param is_highlighted if true, highlights the interactable. Behavior is left 
+##                       at the discretion of the subclass implementation.
 func highlight(_is_highlighted: bool) -> void:
 	printerr("This is an abstract method destined to be overridden in subclasses")

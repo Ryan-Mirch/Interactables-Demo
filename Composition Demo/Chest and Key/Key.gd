@@ -6,12 +6,12 @@ extends Node3D
 
 var picked_up = false
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 	
 	
-# Triggers the interaction. Toggles the door open or closed
+## Triggers the interaction. Toggles the door open or closed
 func interact() -> void:
 	for node_path in unlockables:
 		var node = get_node(node_path)
@@ -26,7 +26,7 @@ func examine() -> void:
 	ExamineManager.examine("This probably unlocks the chest.")
 	
 	
-# Returns `true` if no animation is currently playing
+## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
 	return !picked_up
 	

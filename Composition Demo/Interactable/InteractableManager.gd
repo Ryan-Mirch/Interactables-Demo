@@ -1,5 +1,5 @@
-# An Autoload that takes care of tracking currently used Interactables
-# And picks which should be active
+## An Autoload that takes care of tracking currently used Interactables
+## And picks which should be active
 extends CanvasLayer
 
 @onready var prompt_label: Label = %PromptLabel 
@@ -7,7 +7,7 @@ extends CanvasLayer
 
 var player: Player
 
-# Keeps track of any interactable that can be interacted with
+## Keeps track of any interactable that can be interacted with
 var interactables_in_range: Array[Interactable] = []
 
 
@@ -22,8 +22,8 @@ func _process(_delta: float) -> void:
 	if interactables_in_range.size() > 1 and player != null and player.velocity != Vector3.ZERO:
 		update()
 
-# Reads interactable inputs, and triggers the interactions
-# Because all of the inputs are handled here, its easy to prevent 1 input from
+## Reads interactable inputs, and triggers the interactions
+## Because all of the inputs are handled here, its easy to prevent 1 input from
 #	triggering multiple interactables at the same time.
 func _input(event: InputEvent) -> void:
 	for interactable in interactables_in_range:
@@ -36,8 +36,8 @@ func _input(event: InputEvent) -> void:
 			break
 
 
-# Deactivates the interactables that should be deactivated
-# Activates the interactable that should be activated
+## Deactivates the interactables that should be deactivated
+## Activates the interactable that should be activated
 func update() -> void:
 		
 	# first, deactivate all interactables
@@ -70,11 +70,11 @@ func update() -> void:
 	
 
 
-# Out of all the interactables in range, this finds the interactable that is 
-# best interacted with and returns an array of it plus all its sibling interactables. 
-# Currently, this finds the closest interactables, but you could change it to
-# any logic necessary for your game here; most urgent item, most dangerous, highest priority, etc
-# @returns an Array[Interactable], or an empty Array if no valid interactables were found.
+## Out of all the interactables in range, this finds the interactable that is 
+## best interacted with and returns an array of it plus all its sibling interactables. 
+## Currently, this finds the closest interactables, but you could change it to
+## any logic necessary for your game here; most urgent item, most dangerous, highest priority, etc
+## @returns an Array[Interactable], or an empty Array if no valid interactables were found.
 func _get_interactables_to_activate() -> Array[Interactable]:
 	
 	var valid_interactables: Array[Interactable] = []
@@ -116,20 +116,20 @@ func _get_interactables_to_activate() -> Array[Interactable]:
 	return result
 	
 	
-# Sorts based on its index in the tree.
+## Sorts based on its index in the tree.
 func sort_child_order(a, b) -> bool:
 	return a.get_index() < b.get_index()
 	
 
-# Adds an interactable to the "interactables in range" list, 
-# 	then updates which interactable should be highlighted.
-# This is called from an interactable when the player comes within range.
+## Adds an interactable to the "interactables in range" list, 
+## 	then updates which interactable should be highlighted.
+## This is called from an interactable when the player comes within range.
 func add_interactable_in_range(interactable: Interactable) -> void:	
 	interactables_in_range.append(interactable)
 	update()
 
-# Deactivates an interactable, then removes it from the "interactables in range" list.
-# This is called from an interactable when the player leaves it's range.
+## Deactivates an interactable, then removes it from the "interactables in range" list.
+## This is called from an interactable when the player leaves it's range.
 func erase_interactable_in_range(interactable: Interactable) -> void:
 	interactable.deactivate()
 	interactables_in_range.erase(interactable)

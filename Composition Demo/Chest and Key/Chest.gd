@@ -4,17 +4,17 @@ extends Node3D
 
 var opened = false
 
-# Set to true if the player has the key
+## Set to true if the player has the key
 var unlocked = false
 
 @onready var _animation_player = $"Animations"
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 	
 	
-# Triggers the interaction. Toggles the door open or closed
+## Triggers the interaction. Toggles the door open or closed
 func interact() -> void:	
 	if !unlocked: 
 		_animation_player.play("Locked")
@@ -35,7 +35,7 @@ func examine() -> void:
 		ExamineManager.examine("It's locked. There must be a key somewhere...")
 
 
-# Returns `true` if no animation is currently playing
+## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
 	return true
 	

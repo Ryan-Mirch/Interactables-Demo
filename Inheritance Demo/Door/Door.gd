@@ -4,7 +4,7 @@ extends Interactable
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _highlighter: Sprite3D = $Highlight
 
-# Tracks the door's state. Changes at the end of an animation
+## Tracks the door's state. Changes at the end of an animation
 var _is_open = false
 
 
@@ -14,7 +14,7 @@ func _ready() -> void:
 	_highlighter.visible = false
 
 
-# Triggers the interaction. Toggles the door open or closed
+## Triggers the interaction. Toggles the door open or closed
 func trigger_interaction() -> void:	
 	if _is_open:
 		_animation_player.play("Close")
@@ -23,18 +23,18 @@ func trigger_interaction() -> void:
 	InteractableManager.update_interactables_in_range()
 
 
-# Returns `true` if no animation is currently playing
+## Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
 	return (not _animation_player.is_playing())
 
 
-# Shows or hides the highlight dot
+## Shows or hides the highlight dot
 func highlight(is_highlighted: bool) -> void:
 	_highlighter.visible = is_highlighted
 
 
-# Gets the interaction name. This is used to display a prompt to the user.
-# @returns the text to write to prompt the user to interact
+## Gets the interaction name. This is used to display a prompt to the user.
+## @returns the text to write to prompt the user to interact
 func get_prompt_text() -> String:
 	if _is_open:
 		return "Close Door"
