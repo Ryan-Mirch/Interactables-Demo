@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://r2gv61yjy5f5"]
 
 [ext_resource type="Script" path="res://Chest and Key/Chest.gd" id="1_wgkkx"]
-[ext_resource type="ArrayMesh" uid="uid://drndo5va3k3vf" path="res://visuals/SM_Prop_Chest_03.obj" id="2_pggdy"]
+[ext_resource type="ArrayMesh" uid="uid://7wob1thshj78" path="res://visuals/SM_Prop_Chest_03.obj" id="2_pggdy"]
 [ext_resource type="Texture2D" uid="uid://ikeidi6r7fyp" path="res://visuals/Texture_01_A.png" id="3_8eegn"]
 [ext_resource type="ArrayMesh" uid="uid://cyt7v5ipbiyad" path="res://visuals/SM_Prop_Chest_Lid_03.obj" id="4_45un4"]
 [ext_resource type="ArrayMesh" uid="uid://baopa3uxii8yy" path="res://visuals/SM_Prop_Chest_Treasure_03.obj" id="5_ncyar"]
@@ -74,6 +74,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ojlel"]
 resource_name = "Open"
@@ -124,6 +125,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_uqt54"]
 length = 0.001
@@ -174,12 +176,12 @@ script = ExtResource("1_wgkkx")
 
 [node name="Interaction - Open" parent="." instance=ExtResource("8_rdk14")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.210856, 0)
-line_of_sight_exceptions = [NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")]
+line_of_sight_exceptions = Array[NodePath]([NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")])
 prompt_text = "(E) Open"
 
 [node name="Interaction - Examine" parent="." instance=ExtResource("8_rdk14")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.210856, 0)
-line_of_sight_exceptions = [NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")]
+line_of_sight_exceptions = Array[NodePath]([NodePath("../Bottom/StaticBody3D"), NodePath("../Lid/StaticBody3D")])
 prompt_text = "(I) Examine"
 interact_action = "ui_examine"
 interact_function = "examine"

@@ -16,11 +16,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	
 	# If there is more than 1 interactable in range, and the player has moved,
 	# update the interactables
 	if interactables_in_range.size() > 1 and player != null and player.velocity != Vector3.ZERO:
-		update()
+		update_interactables_in_range()
+
 
 ## Reads interactable inputs, and triggers the interactions
 ## Because all of the inputs are handled here, its easy to prevent 1 input from
@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 
 ## Deactivates the interactables that should be deactivated
 ## Activates the interactable that should be activated
-func update() -> void:
+func update_interactables_in_range() -> void:
 		
 	# first, deactivate all interactables
 	# deactivating disables the interactable and hides its highlighter
@@ -66,8 +66,6 @@ func update() -> void:
 	# show the highlighter of only the first interactable
 	# all interactables have a highlighter, but we only need to show one.
 	interactables_to_activate[0].set_highlighter_visibility(true)
-	
-	
 
 
 ## Out of all the interactables in range, this finds the interactable that is 
@@ -119,21 +117,19 @@ func _get_interactables_to_activate() -> Array[Interactable]:
 ## Sorts based on its index in the tree.
 func sort_child_order(a: Node, b: Node) -> bool:
 	return a.get_index() < b.get_index()
-	
+
 
 ## Adds an interactable to the "interactables in range" list, 
 ## 	then updates which interactable should be highlighted.
 ## This is called from an interactable when the player comes within range.
 func add_interactable_in_range(interactable: Interactable) -> void:	
 	interactables_in_range.append(interactable)
-	update()
+	update_interactables_in_range()
+
 
 ## Deactivates an interactable, then removes it from the "interactables in range" list.
 ## This is called from an interactable when the player leaves it's range.
 func erase_interactable_in_range(interactable: Interactable) -> void:
 	interactable.deactivate()
 	interactables_in_range.erase(interactable)
-	update()
-	
-
-
+	update_interactables_in_range()

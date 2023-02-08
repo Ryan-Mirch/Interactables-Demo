@@ -18,7 +18,7 @@ func open_close() -> void:
 	else:
 		_animation_player.play("Open")
 		_interaction_open_close.prompt_text = "(E) Close"
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 	
 
 func examine() -> void:
@@ -37,6 +37,6 @@ func _on_animation_player_animation_finished(animation_name: String) -> void:
 	if animation_name == "RESET":
 		return
 	_is_open = animation_name == "Open"
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 
 

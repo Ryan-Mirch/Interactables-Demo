@@ -11,14 +11,14 @@ func _ready() -> void:
 
 
 func _on_animation_finished(_animation_name: String) -> void:
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 
 
 ## Triggers the interaction. Toggles the door open or closed
 func interact() -> void:
 	_animation_player.play("Talk")
 	talked_to = true
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 
 
 ## Returns `true` if no animation is currently playing

@@ -8,13 +8,13 @@ func _ready() -> void:
 		# we're forced to have this intermediary function because the `finished` 
 		# signal uses an argument
 		func(_anim_name: String): 
-			InteractableManager.update()
+			InteractableManager.update_interactables_in_range()
 	)
 	
 	
 func interact():
 	_animation_player.play("Press")
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 	
 	
 func is_interactable() -> bool:

@@ -19,7 +19,7 @@ func interact() -> void:
 	open_interactable.disable()
 	_animation_player.play("Open")
 	
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 	
 	
 func examine() -> void:
