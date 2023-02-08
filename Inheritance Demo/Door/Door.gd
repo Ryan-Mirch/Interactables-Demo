@@ -13,18 +13,19 @@ func _ready() -> void:
 	_animation_player.animation_finished.connect(_on_animation_player_animation_finished)
 	_highlighter.visible = false
 
+
 # Triggers the interaction. Toggles the door open or closed
 func trigger_interaction() -> void:	
 	if _is_open:
 		_animation_player.play("Close")
 	else:
 		_animation_player.play("Open")
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 
 
 # Returns `true` if no animation is currently playing
 func is_interactable() -> bool:
-	return !_animation_player.is_playing()
+	return (not _animation_player.is_playing())
 
 
 # Shows or hides the highlight dot
@@ -45,4 +46,4 @@ func _on_animation_player_animation_finished(animation_name: String) -> void:
 	if animation_name == "RESET":
 		return
 	_is_open = animation_name == "Open"
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()

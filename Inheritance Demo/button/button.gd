@@ -9,13 +9,18 @@ var picked_up = false
 func _ready() -> void:
 	super._ready()
 	_highlighter.visible = false
-	_animation_player.animation_finished.connect(func(anim_name): InteractableManager.update())
+	_animation_player.animation_finished.connect(
+		# we're forced to have an intermediary function because `animation_finished`
+		# uses an argument
+		func(_anim_name: String): 
+			InteractableManager.update_interactables_in_range()
+	)
 	
 	
 # Triggers the interaction. Toggles the door open or closed
 func trigger_interaction() -> void:
 	_animation_player.play("Press")
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 	
 	
 # Returns `true` if no animation is currently playing

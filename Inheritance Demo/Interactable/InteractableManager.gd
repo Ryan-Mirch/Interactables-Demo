@@ -1,5 +1,5 @@
 # An Autoload that takes care of tracking currently used Interactables
-# And picks which should receive the interaction
+# And picks which interactable should receive the interaction
 extends CanvasLayer
 
 @onready var prompt_label: Label = %PromptLabel 
@@ -7,7 +7,8 @@ extends CanvasLayer
 
 # Keeps track of any interactable that can be interacted with
 var interactables_in_range: Array[Interactable] = []
-var player
+var player: Player
+
 
 func _ready() -> void:
 	prompt_container.hide()
@@ -15,9 +16,9 @@ func _ready() -> void:
 
 # If there is more than 1 interactable in range, and the player has moved,
 # update the primary interactable.
-func _process(delta: float) -> void:
-	if interactables_in_range.size() > 1 and player.velocity != Vector3.ZERO:
-		update()
+func _process(_delta: float) -> void:
+	if interactables_in_range.size() > 1 and player != null and player.velocity != Vector3.ZERO:
+		update_interactables_in_range()
 
 
 func _input(event: InputEvent) -> void:			
@@ -29,7 +30,7 @@ func _input(event: InputEvent) -> void:
 
 # Cycles all current Interactables, finds the primary one, and highlights it.
 # Unhighlights all the others
-func update() -> void:
+func update_interactables_in_range() -> void:
 	# first, remove all highlights
 	for interactable in interactables_in_range:
 		interactable.highlight(false)
@@ -48,9 +49,9 @@ func update() -> void:
 
 
 # Out of all the interactables in range, returns the interactable that is best
-# interacted with. Currently, this is the closest interactable, but you could insert
-# any logic necessary for your game here; most urgent item, most dangerous, or the
-# closest to the players' line of sight, for example.
+# interacted with. Currently, this is the closest interactable, but you could change
+# this to any logic necessary for your game here; most urgent item, most dangerous, 
+# or the closest to the players' line of sight, for example.
 # @returns an Interactable, or null if no valid interactable was found
 func _get_primary_interactable() -> Interactable:
 		
@@ -80,7 +81,7 @@ func _get_primary_interactable() -> Interactable:
 # highlighted
 func add_interactable_in_range(interactable: Interactable) -> void:	
 	interactables_in_range.insert(0, interactable)
-	update()
+	update_interactables_in_range()
 
 
 # Removes an interactable from the list, then updates which interactable should
@@ -88,6 +89,6 @@ func add_interactable_in_range(interactable: Interactable) -> void:
 func erase_interactable_in_range(interactable: Interactable) -> void:
 	interactable.highlight(false)
 	interactables_in_range.erase(interactable)
-	update()
+	update_interactables_in_range()
 
 

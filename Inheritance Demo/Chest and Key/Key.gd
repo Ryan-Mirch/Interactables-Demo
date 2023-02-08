@@ -21,7 +21,7 @@ func trigger_interaction() -> void:
 		
 	picked_up = true
 	_animation_player.play("Pickup")
-	InteractableManager.update()
+	InteractableManager.update_interactables_in_range()
 	
 	
 
