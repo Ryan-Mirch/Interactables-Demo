@@ -13,7 +13,7 @@ class_name Interactable extends Area3D
 ## The function that gets called if the interact action is pressed
 @export var interact_function := "interact"
 
-var player:Player = null
+var player = null
 var active := false
 
 ## if disabled, "is_interactable" will always return false

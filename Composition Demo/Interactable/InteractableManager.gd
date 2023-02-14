@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var prompt_label: Label = %PromptLabel 
 @onready var prompt_container: PanelContainer = %PromptContainer
 
-var player: Player
+var player
 
 ## Keeps track of any interactable that can be interacted with
 var interactables_in_range: Array[Interactable] = []

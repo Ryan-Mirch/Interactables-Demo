@@ -56,11 +56,17 @@ skeleton = NodePath("../..")
 
 [node name="Interaction - Talk" parent="." instance=ExtResource("4_gplyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.612, 0)
+line_of_sight_exceptions = Array[NodePath]([])
 prompt_text = "(E) Talk"
+require_line_of_sight = true
+interact_action = "ui_interact"
+interact_function = "interact"
 
 [node name="Interaction - Examine" parent="." instance=ExtResource("4_gplyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61159, 0)
+line_of_sight_exceptions = Array[NodePath]([])
 prompt_text = "(I) Examine"
+require_line_of_sight = true
 interact_action = "ui_examine"
 interact_function = "examine"
 
