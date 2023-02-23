@@ -13,8 +13,8 @@ class_name Interactable extends Area3D
 ## The function that gets called if the interact action is pressed
 @export var interact_function := "interact"
 
-var player = null
 var active := false
+var player
 
 ## if disabled, "is_interactable" will always return false
 var disabled := false
@@ -57,7 +57,6 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 	
 ## When the player is no longer in range, remove this interactable from the list of interactables in range.
 func _on_body_exited(_body: CharacterBody3D) -> void:
-	player = null
 	InteractableManager.erase_interactable_in_range(self)
 	
 
@@ -68,28 +67,29 @@ func player_is_in_line_of_sight() -> bool:
 	# if line of sight is not required, return true regardless
 	if not require_line_of_sight:
 		return true
-		
+	
+	if player == null: return false
+	
 	# Shoot a raycast from this interactables position to the players position.
 	# If it hits anything that the player can collide with, it is NOT in the players
-	#	line of sight.
-	if player != null:
-		var space_state := get_world_3d().direct_space_state
-		
-		var exceptions: Array[RID] = []
-		for nodePath in line_of_sight_exceptions:
-			# TODO: casting `as PhysicsBody3D` won't be necessary once the array is typed
-			exceptions.append((get_node(nodePath) as PhysicsBody3D).get_rid())
-		
-		var params := PhysicsRayQueryParameters3D.create(
-			global_position, 
-			player.global_position, 
-			player.collision_mask, 
-			exceptions
-		)
-		
-		var result := space_state.intersect_ray(params)
-		if result == {}:
-			return true
+	#	line of sight.	
+	var space_state := get_world_3d().direct_space_state
+	
+	var exceptions: Array[RID] = []
+	for nodePath in line_of_sight_exceptions:
+		# TODO: casting `as PhysicsBody3D` won't be necessary once the array is typed
+		exceptions.append((get_node(nodePath) as PhysicsBody3D).get_rid())
+	
+	var params := PhysicsRayQueryParameters3D.create(
+		global_position, 
+		player.global_position, 
+		player.collision_mask, 
+		exceptions
+	)
+	
+	var result := space_state.intersect_ray(params)
+	if result == {}:
+		return true
 			
 	return false
 	
@@ -100,6 +100,8 @@ func player_is_in_line_of_sight() -> bool:
 ## For example, the door is not interactable while the open or close animation is playing.
 func is_interactable() -> bool:
 	if disabled: return false
+	
+	if not InteractableManager.interactables_in_range.has(self): return false
 	
 	if not player_is_in_line_of_sight(): return false
 	
