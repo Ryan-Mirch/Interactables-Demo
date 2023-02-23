@@ -34,4 +34,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# if the player moved, update the interactables in range
-	if velocity > Vector3.ZERO: InteractableManager.update_interactables_in_range()
+	if velocity != Vector3.ZERO: 
+		InteractableManager.update_interactables_in_range()
