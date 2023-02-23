@@ -82,7 +82,7 @@ func _get_interactables_to_activate() -> Array[Interactable]:
 	# Get all interactables that can actually be interacted with, which I call
 	# 	"valid interactables".
 	for interactable in interactables_in_range:
-		if interactable.is_interactable() and interactable.player_is_in_line_of_sight():
+		if interactable.is_interactable():
 			valid_interactables.append(interactable)
 	
 	# If none are found, return an empty Array.

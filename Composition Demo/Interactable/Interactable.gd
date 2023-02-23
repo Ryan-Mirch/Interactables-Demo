@@ -101,6 +101,8 @@ func player_is_in_line_of_sight() -> bool:
 func is_interactable() -> bool:
 	if disabled: return false
 	
+	if not player_is_in_line_of_sight(): return false
+	
 	if get_parent().has_method("is_interactable"):
 		return get_parent().is_interactable()
 	else:
