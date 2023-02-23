@@ -59,6 +59,10 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 func _on_body_exited(_body: CharacterBody3D) -> void:
 	InteractableManager.erase_interactable_in_range(self)
 	
+	
+func get_distance_to_player() -> float:
+	return global_position.distance_to(player.global_position)
+	
 
 ## Without checking if the player is in line of sight, you could interact
 #	with interactables through solid objects, like walls for example.

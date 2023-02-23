@@ -8,7 +8,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
-	InteractableManager.player = self
+	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -32,3 +32,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	# if the player moved, update the interactables in range
+	if velocity > Vector3.ZERO: InteractableManager.update_interactables_in_range()

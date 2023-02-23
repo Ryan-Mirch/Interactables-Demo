@@ -5,7 +5,6 @@ extends CanvasLayer
 @onready var prompt_label: Label = %PromptLabel 
 @onready var prompt_container: PanelContainer = %PromptContainer
 
-var player
 
 ## Keeps track of any interactable that can be interacted with
 var interactables_in_range: Array[Interactable] = []
@@ -13,13 +12,6 @@ var interactables_in_range: Array[Interactable] = []
 
 func _ready() -> void:
 	prompt_container.hide()
-
-
-func _process(_delta: float) -> void:
-	# If there is more than 1 interactable in range, and the player has moved,
-	# update the interactables
-	if interactables_in_range.size() > 1 and player != null and player.velocity != Vector3.ZERO:
-		update_interactables_in_range()
 
 
 ## Reads interactable inputs, and triggers the interactions
@@ -91,10 +83,10 @@ func _get_interactables_to_activate() -> Array[Interactable]:
 	
 	# The following finds the closest valid interactable.
 	var closest_interactable := valid_interactables[0]
-	var smallest_distance := closest_interactable.global_position.distance_to(player.global_position)
+	var smallest_distance := closest_interactable.get_distance_to_player()
 	
 	for interactable in valid_interactables:
-		var check_distance := interactable.global_position.distance_to(player.global_position)
+		var check_distance := interactable.get_distance_to_player()
 		if check_distance < smallest_distance:
 			smallest_distance = check_distance
 			closest_interactable = interactable
