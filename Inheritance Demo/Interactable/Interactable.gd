@@ -80,7 +80,7 @@ func trigger_interaction() -> void:
 ## Gets the interaction name. This is used to display a prompt to the user.
 ## @returns the text to write to prompt the user to interact
 func get_prompt_text() -> String:
-	return "Prompt"
+	return "Interact"
 
 
 ## Highlights the interactable. This cannot be done generically because it is going.
